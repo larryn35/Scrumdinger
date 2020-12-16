@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditView: View {
-  @State private var scrumData: DailyScrum.Data = DailyScrum.Data()
+  @Binding var scrumData: DailyScrum.Data
   @State private var newAttendee = ""
   
   var body: some View {
@@ -21,7 +21,7 @@ struct EditView: View {
           }
           .accessibilityValue(Text("\(Int(scrumData.lengthInMinutes)) minutes"))
           Spacer()
-          Text("\(scrumData.lengthInMinutes) minutes")
+          Text("\(Int(scrumData.lengthInMinutes)) minutes")
             .accessibility(hidden: true)
         }
         ColorPicker("Color", selection: $scrumData.color)
@@ -55,6 +55,6 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
   static var previews: some View {
-    EditView()
+    EditView(scrumData: .constant(DailyScrum.data[0].data))
   }
 }
