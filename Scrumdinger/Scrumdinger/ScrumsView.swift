@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ScrumsView: View {
-  
   @Binding var scrums: [DailyScrum]
   
   var body: some View {
